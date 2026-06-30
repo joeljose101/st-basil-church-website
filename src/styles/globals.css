@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --scrollbar-width: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #fafafa;
+  color: #2d2825;
+  font-family: var(--font-lora), Lora, serif;
+}
+
+::selection {
+  background-color: #c5a059;
+  color: #ffffff;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #c5a059;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Scroll reveal utility, toggled by the useReveal hook adding/removing data-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px) scale(0.98);
+  transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.reveal[data-visible='true'] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Event/gallery image zoom on card hover */
+.media-zoom {
+  transition: transform 0.6s ease;
+}
+
+.media-zoom-card:hover .media-zoom {
+  transform: scale(1.08);
+}
